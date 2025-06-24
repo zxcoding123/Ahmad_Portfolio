@@ -64,7 +64,9 @@ const WelcomePage: React.FC = () => {
 
 
               <FaFacebook size={32} />
+              <a href="https://www.tiktok.com/@livet515"> 
               <FaTiktok size={32} />
+              </a>
             </div>
 
           </div>
