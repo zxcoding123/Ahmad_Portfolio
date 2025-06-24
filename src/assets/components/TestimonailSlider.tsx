@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
         id: 1,
         name: 'Kyla Celecious Tomocon',
         institution: 'Western Mindanao State University',
-        image: 'https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-1/504027539_1981650085925947_4421986297752753649_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHTx-0KubsTgf0VwLCsvVIPsRdRRZHU7GCxF1FFkdTsYK_UWv-4UdCQIZ0R-Djk6maFEyoWfhfk-2eKpi833VX0&_nc_ohc=A6RHImAQpf0Q7kNvwFL2Z2u&_nc_oc=AdmQ8-t-3HTZutBztAK4Z3_K7vHPj_jwgHJL34luf2aNsSfV62NbI-CndQ06NFbxIiQ&_nc_zt=24&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=aghFgI55e7Fs8qzJQyjqvg&oh=00_AfN52WvdEwjG00gZtemd2-yJmZHbgsWKwSS0hAnpHUJylA&oe=6859FCAF',
+        image: 'https://i.postimg.cc/d1vJJ3P7/504027539-1981650085925947-4421986297752753649-n.jpg',
         quote: 'Incredibly warm and easy to work with — made everything feel smooth and effortless.',
     },
     {
