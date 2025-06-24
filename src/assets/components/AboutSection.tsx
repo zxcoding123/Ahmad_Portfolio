@@ -75,7 +75,7 @@ const AboutSection: React.FC = () => {
                             threshold={0.2}
                             delay={0.3}
                         >  
-                            in my free time, i like to read books, hit the gym and journal. <br/><br/> p.s - hopeless romantic toward a cat
+                            in my free time, i like to read books, hit the gym and journal. 
                                 </AnimatedContent>
                         </div>
                     </div>
