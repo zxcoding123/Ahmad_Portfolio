@@ -1,0 +1,51 @@
+.falling-text-container {
+  position: relative;
+  width: 100%;
+  height: 100% /* Adjust to fit falling elements */
+}
+
+.falling-text-target {
+  position: relative;
+  z-index: 10;
+}
+
+.falling-text-target .word {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* Space between image and text */
+  box-sizing: border-box;
+}
+
+.falling-text-target img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.falling-text-target h1 {
+  margin: 0;
+  font-size: inherit; /* Respect the fontSize prop */
+}
+
+.falling-text-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.highlighted {
+  color: red; /* Highlight style */
+  font-weight: bold;
+}
+
+/* Style for vertical text */
+.vertical-text {
+  writing-mode: vertical-rl; /* Vertical, right-to-left */
+  text-orientation: mixed; /* Upright characters */
+  white-space: nowrap; /* No line breaks */
+  transform: rotate(180deg); /* Top-to-bottom orientation */
+}
