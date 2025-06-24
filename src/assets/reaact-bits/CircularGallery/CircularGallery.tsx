@@ -598,11 +598,11 @@ class App {
         live_link: "https://wind-energy-site-aquino-github-io.vercel.app/",
       },
       {
-        image: `https://i.postimg.cc/nhXdLfvp/download.png`,
+        image: `https://i.postimg.cc/0y8qbQVD/SMS.png`,
         text: "Student Management System",
         description: "A web application for managing student records, including enrollment, grades, and attendance.",
-        github_link: "https://github.com/zxcoding123/islam_site.github.io",
-        tech_stack: "HTML, CSS, JavaScript, BootStrap and Data-AOS",
+        github_link: "https://github.com/zxcoding123/SMS_System",
+        tech_stack: "HTML, CSS, JavaScript, jQuery, BootStrap, PHP, PHP:PDO, MySQL",
         live_link: "",
       },
 
