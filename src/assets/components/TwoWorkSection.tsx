@@ -434,9 +434,10 @@ const DoubleWorkSection: React.FC = () => {
                 </ClickSpark>
             </div>
 
-            <div className="font-extrabold">
-                <ScrollVelocity texts={['MY OTHER WORKS', 'WORKS OTHER MY']} velocity={50} className="custom-scroll-text-new" />
-            </div>
+         <div className="bg-black text-white font-extrabold text-center py-4 text-9xl">
+  MY OTHER WORKS
+</div>
+
 
             <div style={{ height: '600px', position: 'relative' }} className="poppins-font">
                 <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
