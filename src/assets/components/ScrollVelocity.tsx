@@ -6,7 +6,7 @@ const WorksSection: React.FC = () => {
    <div className='font-extrabold'>
                 <ScrollVelocity
                     texts={['MY FEATURED WORKS', 'WORKS FEATURED MY']}
-                    velocity={50}
+                    velocity={1}
                     className="custom-scroll-text"
                 />
             </div>
