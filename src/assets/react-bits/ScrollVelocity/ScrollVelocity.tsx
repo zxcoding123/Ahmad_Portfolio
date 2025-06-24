@@ -76,84 +76,99 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   parallaxStyle,
   scrollerStyle,
 }) => {
-  function VelocityText({
-    children,
-    baseVelocity = velocity,
-    scrollContainerRef,
-    className = "",
-    damping,
-    stiffness,
-    numCopies,
-    velocityMapping,
-    parallaxClassName,
-    scrollerClassName,
-    parallaxStyle,
-    scrollerStyle,
-  }: VelocityTextProps) {
-    const baseX = useMotionValue(0);
-    const scrollOptions = scrollContainerRef ? { container: scrollContainerRef } : {};
-    const { scrollY } = useScroll(scrollOptions);
-    const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
-      damping: damping ?? 50,
-      stiffness: stiffness ?? 400,
-    });
-    const velocityFactor = useTransform(
-      smoothVelocity,
-      velocityMapping?.input || [0, 1000],
-      velocityMapping?.output || [0, 5],
-      { clamp: false }
-    );
 
-    const copyRef = useRef<HTMLSpanElement>(null);
-    const copyWidth = useElementWidth(copyRef);
+function VelocityText({
+  children,
+  baseVelocity = velocity,
+  scrollContainerRef,
+  className = "",
+  damping,
+  stiffness,
+  numCopies,
+  velocityMapping,
+  parallaxClassName,
+  scrollerClassName,
+  parallaxStyle,
+  scrollerStyle,
+}: VelocityTextProps) {
+  const baseX = useMotionValue(0);
+  const scrollOptions = scrollContainerRef ? { container: scrollContainerRef } : {};
+  const { scrollY } = useScroll(scrollOptions);
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: damping ?? 50,
+    stiffness: stiffness ?? 400,
+  });
+  const velocityFactor = useTransform(
+    smoothVelocity,
+    velocityMapping?.input || [0, 1000],
+    velocityMapping?.output || [0, 5],
+    { clamp: false }
+  );
 
-    function wrap(min: number, max: number, v: number): number {
-      const range = max - min;
-      const mod = (((v - min) % range) + range) % range;
-      return mod + min;
+  const copyRef = useRef<HTMLSpanElement>(null);
+  const copyWidth = useElementWidth(copyRef);
+
+  function wrap(min: number, max: number, v: number): number {
+    const range = max - min;
+    const mod = (((v - min) % range) + range) % range;
+    return mod + min;
+  }
+
+  const x = useTransform(baseX, (v) => {
+    if (copyWidth === 0) return "0px";
+    return `${wrap(-copyWidth, 0, v)}px`;
+  });
+
+  const directionFactor = useRef<number>(1);
+  const prevTime = useRef<number | null>(null);
+  
+  useAnimationFrame((_, delta) => {
+    if (prevTime.current === null) {
+      prevTime.current = delta;
+      return;
+    }
+    
+    // Calculate time difference more accurately
+    const deltaTime = delta - prevTime.current;
+    prevTime.current = delta;
+    
+    let moveBy = directionFactor.current * baseVelocity * (deltaTime / 1000);
+    
+    const currentVelocityFactor = velocityFactor.get();
+    if (currentVelocityFactor < 0) {
+      directionFactor.current = -1;
+    } else if (currentVelocityFactor > 0) {
+      directionFactor.current = 1;
     }
 
-    const x = useTransform(baseX, (v) => {
-      if (copyWidth === 0) return "0px";
-      return `${wrap(-copyWidth, 0, v)}px`;
-    });
-     
-    const directionFactor = useRef<number>(0);
-    useAnimationFrame((a, delta) => {
-      a = 1;
-      let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    // Limit the velocity factor influence
+    const limitedVelocityFactor = Math.min(Math.max(currentVelocityFactor, -2), 2);
+    moveBy += directionFactor.current * moveBy * limitedVelocityFactor;
+    
+    baseX.set(baseX.get() + moveBy);
+  });
 
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1;
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1;
-      }
-
-      moveBy += directionFactor.current * moveBy * velocityFactor.get();
-      baseX.set(baseX.get() + moveBy);
-    });
-
-    const spans = [];
-    for (let i = 0; i < numCopies!; i++) {
-      spans.push(
-        <span className={className} key={i} ref={i === 0 ? copyRef : null}>
-          {children}
-        </span>
-      );
-    }
-
-    return (
-      <div className={parallaxClassName} style={parallaxStyle}>
-        <motion.div
-          className={scrollerClassName}
-          style={{ x, ...scrollerStyle }}
-        >
-          {spans}
-        </motion.div>
-      </div>
+  const spans = [];
+  for (let i = 0; i < numCopies!; i++) {
+    spans.push(
+      <span className={className} key={i} ref={i === 0 ? copyRef : null}>
+        {children}
+      </span>
     );
   }
+
+  return (
+    <div className={parallaxClassName} style={parallaxStyle}>
+      <motion.div
+        className={scrollerClassName}
+        style={{ x, ...scrollerStyle }}
+      >
+        {spans}
+      </motion.div>
+    </div>
+  );
+}
 
   return (
     <section>
