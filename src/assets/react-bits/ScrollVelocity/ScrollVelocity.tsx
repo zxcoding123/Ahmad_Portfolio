@@ -65,7 +65,7 @@ function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>):
 export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   scrollContainerRef,
   texts = [],
-  velocity = 1,
+  velocity = 100,
   className = "",
   damping = 50,
   stiffness = 400,
@@ -119,8 +119,8 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
       return `${wrap(-copyWidth, 0, v)}px`;
     });
 
-    const directionFactor = useRef<number>(1);
-    useAnimationFrame(( delta) => {
+    const directionFactor = useRef<number>(0);
+    useAnimationFrame((t, delta) => {
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
       if (velocityFactor.get() < 0) {
