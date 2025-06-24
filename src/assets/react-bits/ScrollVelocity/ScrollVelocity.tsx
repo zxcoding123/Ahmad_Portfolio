@@ -65,7 +65,7 @@ function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>):
 export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   scrollContainerRef,
   texts = [],
-  velocity = 100,
+  velocity = 1,
   className = "",
   damping = 50,
   stiffness = 400,
