@@ -2,7 +2,6 @@ import React from 'react';
 import {Info, Code2, LayoutDashboard, UserRound, GitBranch, Percent } from "lucide-react";
 import ScrollFloat from '../react-bits/ScrollFloat/ScrollFloat';
 import AnimatedContent from '../react-bits/AnimatedContent/AnimatedContent';
-import ScrollVelocity from '../react-bits/ScrollVelocity/ScrollVelocity';
 import CircularGallery from '../reaact-bits/CircularGallery/CircularGallery';
 import ClickSpark from '../react-bits/ClickSpark/ClickSpark';
 import { useKeenSlider } from "keen-slider/react";
