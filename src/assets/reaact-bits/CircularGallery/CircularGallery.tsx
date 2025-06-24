@@ -566,7 +566,7 @@ class App {
   }
 
   createMedias(
-    items: { image: string; text: string; description: string; github_link: string; tech_stack: string, live_link: string}[] | undefined,
+    items: { image: string; text: string; description: string; github_link: string; tech_stack: string, live_link: string }[] | undefined,
     bend: number,
     textColor: string,
     borderRadius: number,
@@ -574,45 +574,39 @@ class App {
   ) {
     const defaultItems = [
       {
-        image: `https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=`,
+        image: `https://i.postimg.cc/nhXdLfvp/download.png`,
+        text: "Kreyt: Crypto Landing Page",
+        description: "A Web3 Landing Page for a company called Kreyt",
+        github_link: "https://github.com/zxcoding123/Kreyt_Crypto_Site",
+        tech_stack: "React, Vite, Typescript, Framer, Tailwind CSS, React Bits, ShadCDN",
+        live_link: "https://kreyt-crypto-site.vercel.app//",
+      },
+      {
+        image: `https://i.postimg.cc/4yqTYbF3/Screenshot-2025-06-24-203408.png`,
+        text: "DeenConnect Landing Page",
+        description: "A simple landing page for an Islamic organization called DeenConnect",
+        github_link: "https://github.com/zxcoding123/islam_site.github.io",
+        tech_stack: "HTML, CSS, JavaScript, BootStrap and Data-AOS",
+        live_link: "https://islam-site-github-io.vercel.app/",
+      },
+      {
+        image: `https://i.postimg.cc/gkgZTwL2/Wind-Energy.png`,
+        text: "Windy Landing Page",
+        description: "A simple landing page for a Wind Energy Site organization called Windy",
+        github_link: "https://github.com/zxcoding123/Wind_Energy_Site_Aquino.github.io",
+        tech_stack: "HTML, CSS, JavaScript, BootStrap and Data-AOS",
+        live_link: "https://wind-energy-site-aquino-github-io.vercel.app/",
+      },
+      {
+        image: `https://i.postimg.cc/nhXdLfvp/download.png`,
         text: "Student Management System",
         description: "A web application for managing student records, including enrollment, grades, and attendance.",
-        github_link: "https://github.com/example/student-management-system",
-        tech_stack: "React, Node.js, MongoDB",
+        github_link: "https://github.com/zxcoding123/islam_site.github.io",
+        tech_stack: "HTML, CSS, JavaScript, BootStrap and Data-AOS",
         live_link: "",
       },
-      {
-        image: `https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=`,
-        text: "Voting System",
-        description: "An online platform for secure and transparent voting processes.",
-        github_link: "https://github.com/example/voting-system",
-        tech_stack: "Django, PostgreSQL, JavaScript",
-            live_link: "",
-      },
-      {
-        image: `https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=`,
-        text: "AllerEye: Mobile Application",
-        description: "A mobile app for tracking and managing allergies with real-time alerts.",
-        github_link: "https://github.com/example/allereye",
-        tech_stack: "Flutter, Firebase",
-            live_link: "",
-      },
-      {
-        image: `https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=`,
-        text: "8-bit Portfolio Website",
-        description: "A retro-themed portfolio website with an 8-bit design aesthetic.",
-        github_link: "https://github.com/example/8bit-portfolio",
-        tech_stack: "HTML, CSS, JavaScript",
-            live_link: "",
-      },
-      {
-        image: `https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=`,
-        text: "Alumni Relations Website",
-        description: "A platform for connecting alumni with event management and networking features.",
-        github_link: "https://github.com/example/alumni-relations",
-        tech_stack: "Vue.js, Express, MySQL",
-            live_link: "",
-      },
+
+
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
@@ -858,7 +852,7 @@ export default function CircularGallery({
                   <p>No GitHub link available.</p>
                 )}
               </div>
-                 <div>
+              <div>
                 <h3 className="text-lg font-semibold">Live Link</h3>
                 {selectedItem?.live_link ? (
                   <a
